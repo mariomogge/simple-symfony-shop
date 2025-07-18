@@ -1,0 +1,18 @@
+Sim\Entity\Product:
+    attributes:
+        id:
+            groups: ['product_list', 'product_detail']
+        name:
+            groups: ['product_list', 'product_detail']
+        description:
+            groups: ['product_detail']
+        price:
+            groups: ['product_list', 'product_detail']
+        stock:
+            groups: ['product_detail']
+        category:
+            groups: ['product_detail']
+        specifications:
+            groups: ['product_detail']
+        materials:
+            groups: ['product_detail']
