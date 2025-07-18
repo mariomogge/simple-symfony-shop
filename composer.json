@@ -7,6 +7,7 @@
         "php": ">=8.2",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "doctrine/annotations": "^2.0",
         "doctrine/dbal": "^3",
         "doctrine/doctrine-bundle": "^2.15",
         "doctrine/doctrine-migrations-bundle": "^3.4",
@@ -56,12 +57,12 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "src/"
+            "SimpleShop\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "App\\Tests\\": "tests/"
+            "SimpleShop\\Tests\\": "tests/"
         }
     },
     "replace": {
@@ -101,7 +102,7 @@
         "symfony/browser-kit": "7.3.*",
         "symfony/css-selector": "7.3.*",
         "symfony/debug-bundle": "7.3.*",
-        "symfony/maker-bundle": "^1.0",
+        "symfony/maker-bundle": "^1.64",
         "symfony/stopwatch": "7.3.*",
         "symfony/web-profiler-bundle": "7.3.*"
     }

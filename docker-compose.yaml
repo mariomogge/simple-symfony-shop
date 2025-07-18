@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+    container_name: shop_app
+    volumes:
+      - .:/var/www/html
+    environment:
+      - DATABASE_URL=mysql://shop_user:shop_password@db:3306/shop_db?serverVersion=8.0
+    depends_on:
+      - db
+    networks:
+      - shop_network
+
+  db:
+    build:
+      context: docker/mysql
+    container_name: shop_db
+    environment:
+      MYSQL_DATABASE: shop_db
+      MYSQL_USER: shop_user
+      MYSQL_PASSWORD: shop_password
+      MYSQL_ROOT_PASSWORD: root_password
+    volumes:
+      - db_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    networks:
+      - shop_network
+
+  nginx:
+    image: nginx:alpine
+    container_name: shop_nginx
+    volumes:
+      - .:/var/www/html
+      - ./docker/nginx:/etc/nginx/conf.d
+    ports:
+      - "8080:80"
+    depends_on:
+      - app
+    networks:
+      - shop_network
+
+volumes:
+  db_data:
+
+networks:
+  shop_network:
+    driver: bridge
